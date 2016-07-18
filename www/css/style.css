@@ -1,0 +1,17 @@
+/* Empty. Add your own CSS if you like */
+.star>.item-content {
+	background-color: #EEE8D6 !important;
+}
+
+.splash {
+	background: url('../img/asterix_home_bg.jpg') no-repeat center center fixed;
+	-webkit-background-size: contain;
+	-moz-background-size: contain;
+	-o-background-size: contain;
+	background-size: contain;
+}
+
+.item-thumbnail-left > img:first-child, .item-thumbnail-left .item-image, .item-thumbnail-left .item-content > img:first-child, .item-thumbnail-left .item-content .item-image {
+	left: 25px;
+	width: auto;
+}

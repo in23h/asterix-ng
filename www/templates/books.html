@@ -1,0 +1,30 @@
+<ion-view view-title="Asterix Books List">
+	<div class="bar bar-subheader item-input-inset bar-light">
+		<label class="item-input-wrapper">
+			<i class="icon ion-search placeholder-icon"></i>
+			<input type="search" ng-model="query" placeholder="Search">
+		</label>
+	</div>
+
+	<ion-content class="has-subheader">
+		<ion-list>
+			<ion-item>
+				<div class="button-bar">
+					<button class="button" ng-click="filters.collected = ''; tab = 1" ng-class="{'button-calm': tab == 1}">All</button>
+					<button class="button" ng-click="filters.collected = true; tab = 2" ng-class="{'button-calm': tab == 2}">Collected {{($storage.books | filter:collected = true).length}}</button>
+					<button class="button" ng-click="filters.collected = false; tab = 3" ng-class="{'button-calm': tab == 3}">Remaining {{($storage.books | filter:collected = false).length}}</button>
+				</div>
+			</ion-item>
+			<ion-item ng-repeat='book in $storage.books | filter:query | filter:filters' class="item-thumbnail-left item-text-wrap item-icon-right" ng-class="{'star':book.collected}" href="#/tab/books/{{book.volume}}">
+				
+				<img ng-src="{{book.image}}" alt="{{ book.title }} Thumbnail">
+				<h2>{{book.title}}</h2>
+				<h3>{{book.year}}</h3>
+				<p>{{book.description | limitTo: 100}}{{book.description.length > 150 ? '&hellip;' : ''}}</p>
+				<button class="button button-clear icon ion-checkmark-circled button-assertive" ng-click="collectIt(book)" ng-show="book.collected"></button>
+				<ion-option-button class="button-dark" ng-click="collectIt(book)"><i class="icon ion-checkmark-circled"></i></ion-option-button>
+
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

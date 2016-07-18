@@ -1,0 +1,15 @@
+<ion-view view-title="{{book.title}}">
+	
+	<ion-content>
+		<div class="list card" ng-repeat="book in $storage.books | filter: { volume: whichbook }">
+			<div class="item">
+				<h2>{{book.volume}}: {{book.title}}</h2>
+				<p>{{book.year}}</p>
+			</div>
+			<div class="item item-body">
+				<img ng-src="{{book.image}}" alt="{{ book.title }} Image" class="full-image">
+				<p>{{book.description}}</p>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>
